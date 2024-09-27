@@ -1,0 +1,65 @@
+<div class="max-w-lg mx-auto mt-2 bg-gray-950 p-5 rounded-3xl shadow-lg border border-gray-400">
+  <!-- Display de Resultados -->
+
+  <div class="relative flex items-center">
+    <!-- <input type="text" [(ngModel)]="input"
+      class="w-full text-right font-bold text-gray-500 bg-gray-50 p-4 text-4xl border border-gray-200 rounded-md"
+      placeholder="{{isdecimaB ? 'D-B' : ''}}" readonly> -->
+
+
+
+
+
+
+    <input type="text" [(ngModel)]="input"
+      class="w-full text-right font-bold text-gray-500 bg-gray-50 p-4 text-4xl border border-gray-200 rounded-xl"
+      readonly>
+    <span class="absolute left-4 top-4 text-sm font-semibold transition-opacity duration-300"
+      [class.opacity-0]="!isdecimaB" [class.opacity-100]="isdecimaB">{{isdecimaB ? 'D-B' : ''}}</span>
+  </div>
+
+
+
+  <!-- Botones de la Calculadora -->
+  <div class="grid grid-cols-4 gap-3 mt-5">
+    <button *ngFor="let button of buttons"
+      class="py-3 text-2xl font-semibold bg-gray-700 text-orange-500 w-16 h-16 rounded-full hover:bg-gray-950 active:shadow-lg transition"
+      (click)="pressButton(button)">
+      {{button}}
+    </button>
+    <button (click)="cambiarDecialBinario()" [ngClass]="isdecimaB ? 'bg-green-700' : 'bg-gray-700'"
+      class="py-3 text-2xl font-semibold bg-gray-700 text-white w-16 h-16 rounded-full hover:bg-gray-950 active:shadow-lg transition">
+      D/B
+    </button>
+
+
+  </div>
+
+  <!-- Carga de Imagen -->
+  <div class="mt-3">
+    <!-- <label class="block mb-2 text-sm font-bold text-gray-700">Cargar imagen de fórmula</label> -->
+    <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-md p-4">
+      <input type="file" (change)="onFileSelected($event)" class="hidden" id="file-upload">
+      <label for="file-upload"
+        class="flex items-center justify-center w-full cursor-pointer py-3 text-center text-gray-600 border border-dashed border-gray-400 rounded-md hover:bg-gray-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        <span class="text-xl text-gray-400 ">Selecciona una imagen</span>
+      </label>
+    </div>
+  </div>
+
+
+  <!-- Historial de Cálculos -->
+  <div class="mt-2">
+    <!-- <label class="block mb-2 text-sm font-bold text-gray-700">Historial de cálculos</label> -->
+    <div #historyContainer class="border border-gray-300 rounded-md p-5 h-28 font-semibold bg-white overflow-auto">
+      <p *ngIf="history.length === 0" class="text-gray-400 text-center">Historial de cálculos</p>
+      <ul>
+        <li *ngFor="let item of history" class="text-gray-600">{{item}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
