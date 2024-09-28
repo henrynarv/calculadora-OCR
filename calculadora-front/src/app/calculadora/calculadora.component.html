@@ -90,10 +90,10 @@
   <!-- Historial de Cálculos -->
   <div class="mt-4">
     <!-- <label class="block mb-2 text-sm font-bold text-gray-700">Historial de cálculos</label> -->
-    <div #historyContainer class="border border-gray-300 rounded-md p-5 h-28 font-semibold bg-white overflow-auto">
+    <div #historyContainer class="border border-gray-800 rounded-md p-5 h-28 font-semibold bg-gray-900 overflow-auto">
       <p *ngIf="history.length === 0" class="text-gray-400 text-xl text-center">Historial de cálculos</p>
       <ul>
-        <li *ngFor="let item of history" class="text-gray-600">{{item}}</li>
+        <li *ngFor="let item of history" class="text-gray-400 tracking-wider">{{item}}</li>
       </ul>
     </div>
   </div>

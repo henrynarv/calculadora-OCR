@@ -2,26 +2,33 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
-## Development server
+## Instalar del lado del  cliente
+  Tailwinds, angular 16, node, VSC
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Instalar del lado del servidor
+Python, PyCharm community
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Crear un etorno virtual
+  python -m venv venv
 
-## Build
+- Luego activar el entorno virtual
+  venv\Scripts\activate
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Instalar Flask
+  pip install flask
 
-## Running unit tests
+- Instala Tesseract para el reconocimiento de imágenes:
+  Descarga el instalador de Tesseract y agrégalo al PATH.
+  https://github.com/UB-Mannheim/tesseract/wiki
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Instalar la libreria pillow
+  pip install pytesseract pillow
 
-## Running end-to-end tests
+- instalr la libreria opencv
+  pip install opencv-python
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
