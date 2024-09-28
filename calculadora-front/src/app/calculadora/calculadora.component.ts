@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, isDevMode, ViewChild } from '@angular/core';
 import { FileUploadService } from '../services/file-upload.service';
 
 @Component({
@@ -9,12 +9,19 @@ import { FileUploadService } from '../services/file-upload.service';
 export class CalculadoraComponent {
 
   isdecimaB = false;
+  isEcuacion = false;
+  isSumas = false;
 
   input: string = '';
   history: string[] = [];
   buttons: string[] = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+', 'C'];
 
   @ViewChild('historyContainer') historyContainer!: ElementRef;
+
+  ngOnInit(): void {
+    this.cambiarSumas();
+
+  }
 
   constructor(private fileUploadService: FileUploadService) { }
 
@@ -69,7 +76,7 @@ export class CalculadoraComponent {
             this.scrollToBottom();
           }
         )
-      } else {
+      } else if (this.isSumas) {
         this.fileUploadService.uploadFile(file).subscribe(
           (result: any) => {
             console.log('result', result);
@@ -77,8 +84,15 @@ export class CalculadoraComponent {
             this.history.push(`${result.text} = ${this.input}`)
             this.scrollToBottom();
           });
-      }
-
+      } else if (this.isEcuacion) { }
+      this.fileUploadService.ecuacion(file).subscribe(
+        (result: any) => {
+          console.log('result', result);
+          this.input = result.ecuacion;
+          this.history.push(`${result.texto} = ${this.input}`);
+          this.scrollToBottom();
+        }
+      )
 
 
     }
@@ -91,8 +105,31 @@ export class CalculadoraComponent {
 
 
   cambiarDecialBinario() {
-    this.isdecimaB = !this.isdecimaB
+    this.isdecimaB = true;
+    this.isEcuacion = false;
+    this.isSumas = false;
     console.log('this.isdecimaB', this.isdecimaB);
+    console.log('this.isEcuacion', this.isEcuacion);
+    console.log('this.isSumas', this.isSumas);
+  }
+
+
+  cambiarEcuacion() {
+    this.isEcuacion = true;
+    this.isdecimaB = false;
+    this.isSumas = false;
+    console.log('this.isdecimaB', this.isdecimaB);
+    console.log('this.isEcuacion', this.isEcuacion);
+    console.log('this.isSumas', this.isSumas);
+  }
+
+  cambiarSumas() {
+    this.isSumas = true;
+    this.isEcuacion = false;
+    this.isdecimaB = false;
+    console.log('this.isdecimaB', this.isdecimaB);
+    console.log('this.isEcuacion', this.isEcuacion);
+    console.log('this.isSumas', this.isSumas);
   }
 
 

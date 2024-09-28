@@ -13,7 +13,7 @@ export class FileUploadService {
   uploadFile(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<any>(`${this.apiUrl}/recognize`, formData);
+    return this.http.post<any>(`${this.apiUrl}/sumas`, formData);
   }
 
 
@@ -23,5 +23,11 @@ export class FileUploadService {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post<any>(`${this.apiUrl}/convert-to-binary`, formData);
+  }
+
+  ecuacion(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(`${this.apiUrl}/ecuacion`, formData)
   }
 }
